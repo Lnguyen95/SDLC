@@ -13,58 +13,59 @@
 
     public class textAnalyze {
 
-        public static void main(String[] args) {
-        
-        // created hashmap for counting words & values
-        
+	public static void main(String[] args) 
+    {   
+		// created HashMap for counting words & values
         HashMap<String, Integer> wordCountMap = new HashMap<String, Integer>();
         BufferedReader reader = null;
-        
-          try {
-        // created BufferedReader
-        reader = new BufferedReader(new FileReader("C:\\Users\\Desktop\\Shakespear.txt."));
-        
-        //Reading the first line into currentLine
-        String currentLine = reader.readLine();
-        while (currentLine != null) {
-        
-        //splitting the currentLine into words 
-        String[] words = currentLine.toLowerCase().split(" ");
-        
-         //Iterating each word
-        for (String word : words)
+         
+        try
         {
-        //If word is already in wordCountMap, updated count
-        if(wordCountMap.containsKey(word)) 
-        {
-            wordCountMap.put(word, wordCountMap.get(word)+1);
-        } 
-        //otherwise inserting the word as key and 1 as its value
-        else 
-        {
-            wordCountMap.put(word, 1);
+        	// created BufferedReader 
+            reader = new BufferedReader(new FileReader("C:\\Users\\Student\\Desktop\\Shakespear.txt."));
+             
+          //Reading the first line into currentLine
+            String currentLine = reader.readLine();
+            while (currentLine != null)
+            {   
+                //splitting the currentLine into words  
+                String[] words = currentLine.toLowerCase().split(" ");
+                
+                //Iterating each word
+                for (String word : words)
+                {
+                    //If word is already in wordCountMap, updated count
+                    if(wordCountMap.containsKey(word))
+                    {
+                    	wordCountMap.put(word, wordCountMap.get(word)+1);
+                    }
+                    //otherwise inserting the word as key and 1 as its value
+                    else
+                    {
+                        wordCountMap.put(word, 1);
+                    }
+                }
+                //Reading next line into currentLine
+                currentLine = reader.readLine();
             }
-        }
-        //Read next line into currentLine
-        currentLine = reader.readLine();
-        }
-        //Getting entries of wordCountMapn into form of set
-        Set<Entry<String, Integer>> entrySet = wordCountMap.entrySet();
-        
-        //Creating a List passing the entrySet
-        List<Entry<String, Integer>> list = new ArrayList<Entry<String,Integer>>(entrySet);
-        
-        //Sorting the list in decreasing order of values
-        Collections.sort(list, new Comparator<Entry<String, Integer>>() 
-        {
-          public int compare(Entry<String, Integer> e1, Entry<String, Integer> e2) 
-          {
-            return (e2.getValue().compareTo(e1.getValue()));
-          }
-        });
-      
-      // Display printout repeated words in file with the occurrences
-     System.out.println("Repeated Words In Input File Are :");
+          //Getting entries of wordCountMapn into form of set
+            Set<Entry<String, Integer>> entrySet = wordCountMap.entrySet();
+            
+          //Creating a List passing the entrySet
+            List<Entry<String, Integer>> list = new ArrayList<Entry<String,Integer>>(entrySet);
+            
+          //Sorting the list in decreasing order of values 
+            Collections.sort(list, new Comparator<Entry<String, Integer>>() 
+            {
+                @Override
+                public int compare(Entry<String, Integer> e1, Entry<String, Integer> e2) 
+                {
+                    return (e2.getValue().compareTo(e1.getValue()));
+                }
+            });
+   
+            //Printing the repeated words in input file along with their occurrences 
+            System.out.println("Repeated Words In Input File Are :");
             for (Entry<String, Integer> entry : list) 
             {
             	if (entry.getValue() > 1)
@@ -81,13 +82,13 @@
         {
             try
             {
-            //Closing the reader
+            	//Closing the reader
                 reader.close();           
             }
             catch (IOException e) 
             {
                 e.printStackTrace();
-                }
             }
         }
     }
+}
