@@ -50,8 +50,10 @@
         }
         //Getting entries of wordCountMapn into form of set
         Set<Entry<String, Integer>> entrySet = wordCountMap.entrySet();
+        
         //Creating a List passing the entrySet
         List<Entry<String, Integer>> list = new ArrayList<Entry<String,Integer>>(entrySet);
+        
         //Sorting the list in decreasing order of values
         Collections.sort(list, new Comparator<Entry<String, Integer>>() 
         {
@@ -62,7 +64,6 @@
         });
       
       // Display printout repeated words in file with the occurrences
-      
      System.out.println("Repeated Words In Input File Are :");
             for (Entry<String, Integer> entry : list) 
             {
